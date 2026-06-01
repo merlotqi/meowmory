@@ -1,0 +1,3 @@
+add_executable(match_demo match_demo.cpp)
+target_link_libraries(match_demo PRIVATE sfm opencv_highgui opencv_imgcodecs opencv_imgproc)
+target_compile_features(match_demo PRIVATE cxx_std_17)
