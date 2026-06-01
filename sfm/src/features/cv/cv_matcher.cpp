@@ -1,18 +1,15 @@
 #include <sfm/features/cv/cv_matcher.h>
 
+#include <cassert>
 #include <opencv2/core.hpp>
 #include <opencv2/features2d.hpp>
-#include <cassert>
 
 namespace meow::sfm {
 
-CvBFMatcher::CvBFMatcher(float ratio) : ratio_(ratio) {
-  assert(ratio > 0.0F && ratio < 1.0F);
-}
+CvBFMatcher::CvBFMatcher(float ratio) : ratio_(ratio) { assert(ratio > 0.0F && ratio < 1.0F); }
 
-std::vector<FeatureMatch> CvBFMatcher::match(
-    const std::vector<Descriptor>& query,
-    const std::vector<Descriptor>& train) {
+std::vector<FeatureMatch> CvBFMatcher::match(const std::vector<Descriptor>& query,
+                                             const std::vector<Descriptor>& train) {
   if (query.empty() || train.empty()) return {};
 
   auto to_cv_mat = [](const std::vector<Descriptor>& descs) -> cv::Mat {

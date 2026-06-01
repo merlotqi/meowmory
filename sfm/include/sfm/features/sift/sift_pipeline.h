@@ -21,8 +21,7 @@ struct MatchResult {
 
 class SiftPipeline {
  public:
-  SiftPipeline(IFeatureDetector& detector, IFeatureDescriptor& descriptor,
-               IFeatureMatcher& matcher);
+  SiftPipeline(IFeatureDetector& detector, IFeatureDescriptor& descriptor, IFeatureMatcher& matcher);
 
   MatchResult process(const cv::Mat& image1, const cv::Mat& image2);
 

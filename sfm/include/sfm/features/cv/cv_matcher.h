@@ -8,8 +8,7 @@ class CvBFMatcher : public IFeatureMatcher {
  public:
   explicit CvBFMatcher(float ratio = 0.75F);
 
-  std::vector<FeatureMatch> match(const std::vector<Descriptor>& query,
-                                  const std::vector<Descriptor>& train) override;
+  std::vector<FeatureMatch> match(const std::vector<Descriptor>& query, const std::vector<Descriptor>& train) override;
 
  private:
   float ratio_;

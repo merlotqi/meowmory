@@ -1,13 +1,13 @@
-#include <sfm/features/cv/cv_detector.h>
 #include <sfm/features/cv/cv_descriptor.h>
+#include <sfm/features/cv/cv_detector.h>
 #include <sfm/features/cv/cv_matcher.h>
 #include <sfm/features/sift/sift_pipeline.h>
 #include <sfm/sfm.h>
 
-#include <opencv2/highgui.hpp>
-#include <opencv2/imgproc.hpp>
 #include <cstdlib>
 #include <iostream>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
 
 int main(int argc, char* argv[]) {
   if (argc != 3) {
@@ -44,17 +44,14 @@ int main(int argc, char* argv[]) {
 
   std::vector<cv::KeyPoint> cv_kp1, cv_kp2;
   for (const auto& kp : result.query_keypoints) {
-    cv_kp1.emplace_back(cv::Point2f{(float)kp.pt.x, (float)kp.pt.y},
-                        (float)kp.size);
+    cv_kp1.emplace_back(cv::Point2f{(float)kp.pt.x, (float)kp.pt.y}, (float)kp.size);
   }
   for (const auto& kp : result.train_keypoints) {
-    cv_kp2.emplace_back(cv::Point2f{(float)kp.pt.x, (float)kp.pt.y},
-                        (float)kp.size);
+    cv_kp2.emplace_back(cv::Point2f{(float)kp.pt.x, (float)kp.pt.y}, (float)kp.size);
   }
 
   cv::Mat match_img;
-  cv::drawMatches(img1_color, cv_kp1, img2_color, cv_kp2, cv_matches,
-                  match_img);
+  cv::drawMatches(img1_color, cv_kp1, img2_color, cv_kp2, cv_matches, match_img);
   cv::namedWindow("SIFT Matches", cv::WINDOW_NORMAL);
   cv::imshow("SIFT Matches", match_img);
   cv::waitKey(0);

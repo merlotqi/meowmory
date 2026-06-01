@@ -12,8 +12,7 @@ class CvSiftDescriptor : public IFeatureDescriptor {
   CvSiftDescriptor();
   ~CvSiftDescriptor() override;
 
-  std::vector<Descriptor> compute(const cv::Mat& image,
-                                  const std::vector<KeyPoint>& keypoints) override;
+  std::vector<Descriptor> compute(const cv::Mat& image, const std::vector<KeyPoint>& keypoints) override;
 
  private:
   cv::Ptr<cv::SIFT> sift_;

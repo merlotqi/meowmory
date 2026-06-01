@@ -6,8 +6,7 @@ namespace meow::sfm {
 
 cv::KeyPoint to_cv_keypoint(const KeyPoint& kp) {
   cv::KeyPoint cv_kp;
-  cv_kp.pt =
-      cv::Point2f{static_cast<float>(kp.pt.x), static_cast<float>(kp.pt.y)};
+  cv_kp.pt = cv::Point2f{static_cast<float>(kp.pt.x), static_cast<float>(kp.pt.y)};
   cv_kp.size = static_cast<float>(kp.size);
   cv_kp.angle = static_cast<float>(kp.angle);
   cv_kp.response = static_cast<float>(kp.response);
@@ -33,14 +32,11 @@ Descriptor from_cv_mat(const cv::Mat& desc_mat, int row, const KeyPoint& kp) {
   return desc;
 }
 
-CvSiftDescriptor::CvSiftDescriptor() : sift_(cv::SIFT::create()) {
-  assert(sift_ != nullptr);
-}
+CvSiftDescriptor::CvSiftDescriptor() : sift_(cv::SIFT::create()) { assert(sift_ != nullptr); }
 
 CvSiftDescriptor::~CvSiftDescriptor() = default;
 
-std::vector<Descriptor> CvSiftDescriptor::compute(
-    const cv::Mat& image, const std::vector<KeyPoint>& keypoints) {
+std::vector<Descriptor> CvSiftDescriptor::compute(const cv::Mat& image, const std::vector<KeyPoint>& keypoints) {
   assert(!image.empty());
 
   std::vector<cv::KeyPoint> cv_keypoints;

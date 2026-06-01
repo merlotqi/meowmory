@@ -12,3 +12,4 @@ target_compile_features(sfm PUBLIC cxx_std_17)
 
 add_subdirectory(src)
 add_subdirectory(app)
+add_subdirectory(tests)
