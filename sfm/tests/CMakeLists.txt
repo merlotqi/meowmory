@@ -8,6 +8,7 @@ FetchContent_MakeAvailable(Catch2)
 
 add_executable(sfm_tests
     test_pipeline.cpp
+    test_gaussian_pyramid.cpp
 )
 target_link_libraries(sfm_tests PRIVATE sfm Catch2::Catch2WithMain opencv_highgui)
 target_compile_features(sfm_tests PRIVATE cxx_std_17)
